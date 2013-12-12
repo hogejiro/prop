@@ -1,2 +1,2 @@
-https://travis-ci.org/hogejiro/prop.png
+https://travis-ci.org/hogejiro/prop.png  
 learning php programming
