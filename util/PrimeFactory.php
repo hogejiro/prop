@@ -10,7 +10,7 @@ class PrimeFactory
      */
     public function getPrimes($num)
     {
-        if (! (isset($num) && ctype_digit($num))) {
+        if (! (isset($num) && is_numeric($num))) {
             return false;
         }
         if ($num < 2) {
@@ -45,7 +45,7 @@ class PrimeFactory
      */
     public function getPrimeFactors($num)
     {
-        if (! (isset($num) && ctype_digit($num))) {
+        if (! (isset($num) && is_numeric($num))) {
             return false;
         }
         if ($num < 2) {
