@@ -11,9 +11,10 @@ class PrimeFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
      * @dataProvider getPrimesProvider
      */
-    function testGetPrimes($num, $expected)
+    function getPrimes($num, $expected)
     {
         $actual = $this->pf->getPrimes($num);
         $this->assertEquals($actual, $expected);
@@ -30,9 +31,10 @@ class PrimeFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
      * @dataProvider getPrimeFactorsProvider()
      */
-    function testGetPrimeFactors($num, $expected)
+    function getPrimeFactors($num, $expected)
     {
         $actual = $this->pf->getPrimeFactors($num);
         $this->assertEquals($actual, $expected);
