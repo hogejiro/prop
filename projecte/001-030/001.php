@@ -1,16 +1,12 @@
 <?php
-function calcSumOfFilteredNumbers($filter_numbers, $upper_limit)
-{
-    $sum = 0;
-    for ($idx = 1; $idx < $upper_limit; $idx++) {
-        foreach ($filter_numbers as $filter_num) {
-            if ($idx % $filter_num == 0) {
-                $sum += $idx;
-                break;
-            }
-        }
-    }
-    return $sum;
-}
+$filter_by_3_and_5 = function ($object_num)
+                     {
+                         $filter_numbers = [3, 5];
+                         foreach ($filter_numbers as $filter_num) {
+                             if ($object_num % $filter_num == 0) {
+                                 return $object_num;
+                             }
+                         }
+                     };
 
-print calcSumOfFilteredNumbers(array(3, 5), 1000);
+print array_sum(array_filter(range(1, 1000), $filter_by_3_and_5));

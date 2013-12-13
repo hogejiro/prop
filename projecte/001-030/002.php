@@ -8,4 +8,4 @@ $even_filter = function($num)
                        return $num;
                    }
                };
-print(array_sum(array_map($even_filter, $ff->getFibsByUpperLimit(4000000))));
+print(array_sum(array_filter($ff->getFibsByUpperLimit(4000000), $even_filter)));
