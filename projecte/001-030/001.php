@@ -1,12 +1,12 @@
 <?php
-$filter_by_3_and_5 = function ($object_num)
-                     {
-                         $filter_numbers = [3, 5];
-                         foreach ($filter_numbers as $filter_num) {
-                             if ($object_num % $filter_num == 0) {
-                                 return $object_num;
-                             }
-                         }
-                     };
+$filter_numbers = [3, 5];
+$filter = function ($object_num) use ($filter_numbers)
+          {
+              foreach ($filter_numbers as $filter_num) {
+                  if ($object_num % $filter_num == 0) {
+                      return $object_num;
+                  }
+              }
+          };
 
-print array_sum(array_filter(range(1, 1000), $filter_by_3_and_5));
+print array_sum(array_filter(range(1, 1000), $filter));
