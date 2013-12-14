@@ -12,6 +12,31 @@ class PrimeFactoryTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @dataProvider getPrimeProvider
+     */
+    function getPrime($num, $expected)
+    {
+        $actual = $this->pf->getPrime($num);
+        $this->assertEquals($actual, $expected);
+    }
+
+    function getPrimeProvider()
+    {
+        return [
+            [ 1,   2],
+            [ 2,   3],
+            [ 3,   5],
+            [10,  29],
+            [50, 229],
+            [0, false],
+            [-1, false],
+            [4.9, false],
+            ['invalid', false],
+        ];
+    }
+
+    /**
+     * @test
      * @dataProvider getPrimesByUpperLimitProvider
      */
     function getPrimesByUpperLimit($upper_limit, $expected)

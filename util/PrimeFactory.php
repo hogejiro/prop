@@ -2,6 +2,30 @@
 class PrimeFactory
 {
     /**
+     * get prime
+     * (ex) getprime(6) = [2, 3, 5, 7, 11, 13]
+     *
+     * @param  (int)         $num
+     * @return (int / false) $prime the $num-th prime
+     */
+    public function getPrime($num)
+    {
+        if (! (is_int($num) && $num > 0)) {
+            return false;
+        }
+        if ($num == 1) {
+            return 2;
+        }
+        $idx = 1;
+        foreach ($this->_generatePrimes() as $prime) {
+            $idx++;
+            if ($idx == $num) {
+                return $prime;
+            }
+        }
+    }
+
+    /**
      * get primes below $upper_limit
      * (ex) getprimes(10) = [2, 3, 5, 7]
      *
@@ -17,7 +41,22 @@ class PrimeFactory
             return [];
         }
         $primes = [2];
-        for ($idx = 3; $idx <= $upper_limit; $idx++) {
+        foreach ($this->_generatePrimes() as $prime) {
+            if ($prime > $upper_limit) {
+                return $primes;
+            }
+            $primes[] = $prime;
+        }
+    }
+
+    /**
+     * generate Primes
+     *
+     * @yield prime
+     */
+    private function _generatePrimes() {
+        $primes = [2];
+        for ($idx = 3; ; $idx += 2) {
             $is_prime = true;
             foreach ($primes as $prime) {
                 if ($idx < $prime * $prime) {
@@ -29,10 +68,10 @@ class PrimeFactory
                 }
             }
             if ($is_prime) {
-                array_push($primes, $idx);
+                yield $idx;
+                $primes[] = $idx;
             }
         }
-        return $primes;
     }
 
     /**
