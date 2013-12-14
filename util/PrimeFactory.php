@@ -2,22 +2,22 @@
 class PrimeFactory
 {
     /**
-     * get primes below $num 
+     * get primes below $upper_limit
      * (ex) getprimes(10) = [2, 3, 5, 7]
-     * 
-     * @param  $num    object number (>= 2)
-     * @return $primes array of prime numbers / false
+     *
+     * @param  (int / float)  $upper_limit
+     * @return (@int / false) $primes prime numbers
      */
-    public function getPrimes($num)
+    public function getPrimesByUpperLimit($upper_limit)
     {
-        if (! (isset($num) && is_numeric($num))) {
+        if (! (is_numeric($upper_limit) && $upper_limit > 0)) {
             return false;
         }
-        if ($num < 2) {
+        if ($upper_limit < 2) {
             return [];
         }
         $primes = [2];
-        for ($idx = 3; $idx <= $num; $idx++) {
+        for ($idx = 3; $idx <= $upper_limit; $idx++) {
             $is_prime = true;
             foreach ($primes as $prime) {
                 if ($idx < $prime * $prime) {
@@ -38,21 +38,21 @@ class PrimeFactory
     /**
      * get prime factors
      * (ex) getprimefactors(63) = array(3 => 2, 7 => 1)
-     * array(3 => 2, 7 => 1) means 3 * 3 * 7
-     * 
-     * @param $num object number
-     * @return $prime_factors array of prime factors / false
+     *      this means 63 = 3 * 3 * 7
+     *
+     * @param  (int)          $num
+     * @return (@int / false) $prime_factors prime factors
      */
     public function getPrimeFactors($num)
     {
-        if (! (isset($num) && is_numeric($num))) {
+        if (! is_int($num)) {
             return false;
         }
         if ($num < 2) {
             return [];
         }
         $prime_factors = [];
-        $primes = $this->getPrimes(sqrt($num));
+        $primes = $this->getPrimesByUpperLimit(sqrt($num));
         foreach ($primes as $prime) {
             if ($num == 1) {
                 break;
