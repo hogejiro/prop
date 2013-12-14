@@ -23,15 +23,13 @@ class FibonacciFactoryTest extends PHPUnit_Framework_TestCase
     function getFibsByUpperLimitProvider()
     {
         return [
-            [1, [1]],
-            [2, [1, 2]],
+            [ 1, [1]],
+            [ 2, [1, 2]],
             [10, [1, 2, 3, 5, 8]],
             [50, [1, 2, 3, 5, 8, 13, 21, 34]],
-            ["invalid", false],
-            [4.9, [1, 2, 3]],
             [-1, []],
-            [false, false],
-            [array(), false],
+            [4.9, [1, 2, 3]],
+            ['invalid', false],
         ];
     }
 }
