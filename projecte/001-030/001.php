@@ -9,4 +9,4 @@ $filter = function ($object_num) use ($filter_numbers)
               }
           };
 
-print array_sum(array_filter(range(1, 1000), $filter));
+print array_sum(array_filter(range(1, 999), $filter));
