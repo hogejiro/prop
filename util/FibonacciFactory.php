@@ -1,10 +1,11 @@
 <?php
+
 class FibonacciFactory
 {
     /**
-     * getFibsByUpperLimit 
+     * getFibsByUpperLimit
      * (ex) getFibsByUpperLimit(10) = [1, 2, 3, 5, 8]
-     * 
+     *
      * @param  (int / float)  $upper_limit upper limit
      * @return (@int / false) $fib_array   fibonacci numbers
      */
